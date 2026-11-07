@@ -22,5 +22,8 @@
     "eslint-config-next": "16.4.5",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "magic-string": "0.30.21"
   }
 }

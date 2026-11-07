@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rose Weseley: Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js 16 (App Router), TypeScript and Tailwind CSS v4.
+Design: clean white background with pink accents. Soft glows, frosted-glass cards with cursor-following light,
+an animated "AI core" hero visual, a typing prompt bar, scroll reveals, and honest status
+badges on every project. Colors live in `src/app/globals.css`.
 
-First, run the development server:
+## Run it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command         | What it does                         |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Dev server with hot reload           |
+| `npm run build` | Production build (catches errors)    |
+| `npm run start` | Serve the production build           |
+| `npm run lint`  | ESLint                               |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Where things live
 
-## Learn More
+```
+src/
+  content/
+    site.ts        ← your name, bio, GitHub/LinkedIn/email links
+    projects.ts    ← every project (add new ones here)
+  app/
+    page.tsx               ← homepage (incl. the "Currently" note)
+    about/page.tsx         ← About page
+    projects/page.tsx      ← project index with status filters
+    projects/[slug]/page.tsx ← case-study template
+    globals.css            ← colors and fonts
+  components/      ← cards, stamps, header, footer, etc.
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Add a project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Open `src/content/projects.ts`.
+2. Copy an existing object in the `projects` array and edit it.
+3. Choose an honest `status`: `case-study`, `in-progress`, `design-concept`, or `coming-soon`.
+4. Set `featured: true` to show it on the homepage.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The homepage, `/projects`, and `/projects/<slug>` update automatically.
 
-## Deploy on Vercel
+## Before publishing: fill in placeholders
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Search the project for `TODO(Rose)` and `YOUR-`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- GitHub, LinkedIn, and email URLs in `src/content/site.ts`
+- Resume link (`site.links.resume`; the resume link stays hidden until set)
+- Figma prototype link and project timeframes/roles in `projects.ts`
+- Personal paragraphs on the About page
+
+Placeholder project links (`href: "#"`) render as "(link coming)" instead of a broken link.
+
+## Notes
+
+- `package.json` pins `magic-string` to `0.30.21` via `overrides`. Newer magic-string
+  releases are ESM-only and break Tailwind's Turbopack loader. Remove the override once
+  `@tailwindcss/turbopack` is updated.
+- Recommended Node.js: the current LTS (v22.12+ or v24). The project builds on v21.6.2,
+  but that version is end-of-life.

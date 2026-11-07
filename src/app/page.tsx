@@ -1,69 +1,168 @@
-import Image from "next/image";
+import Link from "next/link";
+import { AICore } from "@/components/ai-core";
+import { Container } from "@/components/container";
+import { ProjectCard } from "@/components/project-card";
+import { Reveal } from "@/components/reveal";
+import { SpotlightCard } from "@/components/spotlight-card";
+import { projects } from "@/content/projects";
+import { site } from "@/content/site";
+
+// TODO(Rose): keep this current.
+const currently = [
+  { label: "Working", value: "Technology & strategy consulting at PwC" },
+  { label: "Up next", value: "An AI sales intelligence app" },
+  { label: "Interested in", value: "AI, software & startups" },
+];
+
+const focus = [
+  {
+    icon: "◇",
+    title: "Strategy",
+    body: "Economics and consulting have taught me to understand a problem well before jumping to a solution.",
+  },
+  {
+    icon: "⌘",
+    title: "Engineering",
+    body: "I studied Computer Science, and I like building tools people actually use, like an onboarding automation for my team.",
+  },
+  {
+    icon: "✦",
+    title: "AI",
+    body: "I'm curious about how AI can take on slow, manual work. My next project is a chance to dig into that.",
+  },
+];
 
 export default function Home() {
+  const featured = projects.filter((p) => p.featured);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {/* ── Hero ─────────────────────────────────────────────── */}
+      <section className="relative">
+        <Container className="grid items-center gap-12 pt-20 pb-24 sm:pt-28 lg:grid-cols-[1.25fr_1fr] lg:gap-6">
+          <div>
+            <Reveal>
+              <Link
+                href="/projects/ai-sales-intelligence"
+                className="glass inline-flex items-center gap-2 rounded-full py-1 pr-3 pl-1 text-xs text-muted transition hover:text-text"
+              >
+                <span className="rounded-full bg-gradient-to-r from-accent-2 to-accent-2 px-2 py-0.5 font-medium text-white">Up next</span>
+                An AI sales intelligence app (coming soon)
+              </Link>
+            </Reveal>
+            <Reveal delay={80}>
+              <h1 className="mt-7 text-[clamp(3rem,8vw,6rem)] leading-[0.98] font-medium tracking-[-0.045em]">
+                <span className="text-fade">Hi, I&rsquo;m </span>
+                <span className="text-fade">Rose.</span>
+              </h1>
+            </Reveal>
+            <Reveal delay={160}>
+              <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted">
+                I studied Computer Science and Economics at Wellesley and now work in technology and strategy
+                consulting at PwC. I like finding problems, figuring out how to solve them, and building things
+                along the way.
+              </p>
+            </Reveal>
+            <Reveal delay={240} className="mt-9 flex flex-wrap items-center gap-3">
+              <Link
+                href="/projects"
+                className="group inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-medium text-white shadow-[0_0_40px_-8px_rgb(236_72_153/0.45)] transition hover:shadow-[0_0_50px_-6px_rgb(244_114_182/0.7)]"
+              >
+                See my projects
+                <span aria-hidden className="transition group-hover:translate-x-0.5">→</span>
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center rounded-xl border border-border bg-surface px-5 py-3 text-sm font-medium transition hover:border-border-strong hover:bg-surface-2"
+              >
+                About me
+              </Link>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200} className="relative mx-auto w-full max-w-[460px]">
+            <AICore />
+            <div className="glass relative z-10 mx-auto -mt-16 w-[92%] rounded-2xl p-4 shadow-[0_20px_60px_-20px_rgb(0_0_0/0.12)] sm:w-[84%]">
+              <p className="flex items-center gap-2 font-mono text-[10px] tracking-[0.2em] text-muted uppercase">
+                <span className="size-1.5 animate-pulse rounded-full bg-accent-2 shadow-[0_0_8px_var(--accent-2)]" aria-hidden />
+                Currently
+              </p>
+              <dl className="mt-3 space-y-2">
+                {currently.map((c) => (
+                  <div key={c.label} className="flex items-baseline justify-between gap-4 text-sm">
+                    <dt className="shrink-0 text-muted">{c.label}</dt>
+                    <dd className="text-right text-text">{c.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ── Interests strip ──────────────────────────────────── */}
+      <section aria-label="Interests" className="border-y border-border bg-surface/50">
+        <Container className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6">
+          {site.interests.map((interest, i) => (
+            <span key={interest} className="flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-muted uppercase">
+              <span aria-hidden className={i % 2 ? "text-accent" : "text-accent"}>✦</span>
+              {interest}
+            </span>
+          ))}
+        </Container>
+      </section>
+
+      {/* ── What I work on ───────────────────────────────────── */}
+      <section className="py-28" aria-labelledby="focus-heading">
+        <Container>
+          <Reveal className="max-w-2xl">
+            <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">What I work on</p>
+            <h2 id="focus-heading" className="mt-4 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
+              <span className="text-fade">A mix of strategy and </span>
+              <span className="text-fade">code.</span>
+            </h2>
+          </Reveal>
+          <ul className="mt-14 grid gap-5 md:grid-cols-3">
+            {focus.map((c, i) => (
+              <Reveal as="li" key={c.title} delay={i * 100}>
+                <SpotlightCard className="glass h-full rounded-3xl p-7">
+                  <span aria-hidden className="grid size-11 place-items-center rounded-xl border border-border bg-gradient-to-br from-accent-2/15 to-accent-soft/20 text-lg text-accent">
+                    {c.icon}
+                  </span>
+                  <h3 className="mt-6 text-lg font-medium">{c.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{c.body}</p>
+                </SpotlightCard>
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      {/* ── Projects ─────────────────────────────────────────── */}
+      <section className="pb-8" aria-labelledby="work-heading">
+        <Container>
+          <Reveal className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Projects</p>
+              <h2 id="work-heading" className="mt-4 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
+                <span className="text-fade">A few things I&rsquo;ve </span>
+                <span className="text-fade">worked on.</span>
+              </h2>
+            </div>
+            <Link href="/projects" className="group text-sm text-muted transition hover:text-text">
+              See all <span aria-hidden className="inline-block transition group-hover:translate-x-0.5">→</span>
+            </Link>
+          </Reveal>
+
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((project, i) => (
+              <Reveal as="li" key={project.slug} delay={i * 100}>
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
+          </ul>
+        </Container>
+      </section>
+    </>
   );
 }
