@@ -5,7 +5,6 @@ import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { projects } from "@/content/projects";
-import { site } from "@/content/site";
 
 // TODO(Rose): keep this current.
 const currently = [
@@ -100,14 +99,11 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ── Interests strip ──────────────────────────────────── */}
-      <section aria-label="Interests" className="border-y border-border bg-surface/50">
-        <Container className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 py-6">
-          {site.interests.map((interest, i) => (
-            <span key={interest} className="flex items-center gap-2 font-mono text-xs tracking-[0.18em] text-muted uppercase">
-              <span aria-hidden className={i % 2 ? "text-accent" : "text-accent"}>✦</span>
-              {interest}
-            </span>
+      {/* ── Divider: three pink diamonds ─────────────────────── */}
+      <section aria-hidden className="border-y border-border bg-surface/50">
+        <Container className="flex items-center justify-center gap-8 py-6">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="text-accent-2">✦</span>
           ))}
         </Container>
       </section>

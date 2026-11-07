@@ -15,7 +15,6 @@ export function SiteFooter() {
             <span className="text-fade">Thanks for </span>
             <span className="text-fade">stopping by.</span>
           </p>
-          <p className="mt-3 text-muted">You can find my code on GitHub.</p>
           <SocialLinks className="mt-6" />
         </div>
         <div className="flex flex-col gap-3 font-mono text-xs text-muted md:items-end">
@@ -23,6 +22,7 @@ export function SiteFooter() {
             <Link href="/" className="hover:text-text">Home</Link>
             <Link href="/projects" className="hover:text-text">Work</Link>
             <Link href="/about" className="hover:text-text">About</Link>
+            <Link href="/resume" className="hover:text-text">Resume</Link>
           </nav>
           <p>© {site.name} · Built with Next.js, TypeScript &amp; Tailwind</p>
         </div>

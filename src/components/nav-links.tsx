@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 export const navItems = [
   { href: "/projects", label: "Work" },
   { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
 ] as const;
 
 const base = "rounded-xl px-3 py-1.5 text-sm text-muted transition-colors hover:bg-surface-2 hover:text-text";

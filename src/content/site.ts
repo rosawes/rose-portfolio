@@ -18,12 +18,11 @@ export const site = {
   },
   links: {
     github: "https://github.com/rosawes",
-    // TODO(Rose): add your LinkedIn URL, e.g. "https://www.linkedin.com/in/…"
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/in/frances-rose-weseley",
     // TODO(Rose): add the email you want public, as "mailto:you@example.com"
     email: "",
-    // TODO(Rose): add a resume PDF to /public and set this to e.g. "/resume.pdf"
-    resume: "",
+    // The PDF lives at public/resume.pdf. Replace that file to update it.
+    resume: "/resume.pdf",
   },
 } as const;
 

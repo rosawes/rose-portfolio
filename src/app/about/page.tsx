@@ -4,8 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { SocialLinks } from "@/components/social-links";
-import { SpotlightCard } from "@/components/spotlight-card";
-import { isPlaceholderLink, site } from "@/content/site";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -31,21 +30,6 @@ const path = [
   },
 ];
 
-// TODO(Rose): starting points. Rewrite them in your own voice.
-const principles = [
-  {
-    title: "Start with the real problem",
-    body: "Consulting taught me to ask what's actually slowing people down before deciding what to build.",
-  },
-  {
-    title: "Keep it simple",
-    body: "A simple tool people use every day is worth more than an impressive one nobody opens.",
-  },
-  {
-    title: "Measure what changed",
-    body: "If something got better, I like being able to say by how much.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -129,27 +113,6 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section aria-labelledby="principles-heading" className="py-16">
-        <Container>
-          <Reveal>
-            <h2 id="principles-heading" className="text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
-              <span className="text-fade">How I like to </span>
-              <span className="text-fade">work.</span>
-            </h2>
-          </Reveal>
-          <ul className="mt-12 grid gap-5 md:grid-cols-3">
-            {principles.map((p, i) => (
-              <Reveal as="li" key={p.title} delay={i * 100}>
-                <SpotlightCard className="glass h-full rounded-3xl p-7">
-                  <span className="font-mono text-sm text-gradient">0{i + 1}</span>
-                  <h3 className="mt-5 text-lg font-medium">{p.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{p.body}</p>
-                </SpotlightCard>
-              </Reveal>
-            ))}
-          </ul>
-        </Container>
-      </section>
 
       <section aria-labelledby="interests-heading" className="py-16">
         <Container>
@@ -169,11 +132,6 @@ export default function AboutPage() {
             <div>
               <h2 className="font-mono text-xs tracking-[0.2em] text-muted uppercase">Find me</h2>
               <SocialLinks className="mt-6" />
-              {!isPlaceholderLink(site.links.resume) ? (
-                <a href={site.links.resume} className="mt-4 inline-block text-sm text-accent hover:underline">
-                  Download resume (PDF) ↗
-                </a>
-              ) : null}
               <p className="mt-8 text-muted">
                 Or see what I&rsquo;ve been{" "}
                 <Link href="/projects" className="text-text underline decoration-accent decoration-2 underline-offset-4">
