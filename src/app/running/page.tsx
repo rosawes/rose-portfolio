@@ -33,8 +33,11 @@ export default function RunningPage() {
               The Running Archive
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Every mile I log, my road to all seven World Marathon Majors, and what running has helped me raise for
-              charity.
+              Tracking my miles, marathon milestones, and the impact I&rsquo;ve made along the way.
+            </p>
+            <p className="mt-4 inline-flex items-center gap-2 text-sm text-[#d4573f]" role="status">
+              <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-[#e8735c]" />
+              Running data is currently being imported. More miles coming soon.
             </p>
           </Reveal>
         </Container>
@@ -89,7 +92,7 @@ function Archive({ archive }: { archive: PublicArchive }) {
     <>
       <Container className="pb-10">
         <Reveal delay={100} className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          <HeroStat value={formatMiles(summary.distanceM)} label="lifetime miles" />
+          <HeroStat value={formatMiles(summary.distanceM)} label="miles logged" />
           <HeroStat value={summary.runs.toLocaleString("en-US")} label="runs logged" />
           <HeroStat value={`${majorsDone}/7`} label="Majors completed" />
           <HeroStat value={formatRaised(raised.cents, raised.isMinimum)} label="raised for charity" />
@@ -131,7 +134,8 @@ function Archive({ archive }: { archive: PublicArchive }) {
         <section aria-labelledby="impact-title" id="impact" className="scroll-mt-36">
           <Container>
             <SectionHeading id="impact-title" index="3" kicker="The Impact" title="Miles that give back.">
-              Running has become a way to raise money for causes I care about. Here&rsquo;s where it came from.
+              For the 2026 NYC Marathon, I raised over $7,000 for breast cancer research at Memorial Sloan Kettering
+              Cancer Center as part of Fred&rsquo;s Team. Here&rsquo;s where it came from, and what&rsquo;s next.
             </SectionHeading>
             <div className="mt-10">
               <ImpactSection campaigns={archive.campaigns} contributions={archive.contributions} />

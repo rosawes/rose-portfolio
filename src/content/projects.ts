@@ -13,6 +13,7 @@
  */
 
 export type ProjectStatus =
+  | "live" // live product people can use
   | "case-study" // finished work, written up
   | "in-progress" // being built right now
   | "design-concept" // designed, not built
@@ -22,6 +23,10 @@ export const statusMeta: Record<
   ProjectStatus,
   { label: string; description: string }
 > = {
+  live: {
+    label: "Live",
+    description: "Live and in use.",
+  },
   "case-study": {
     label: "Case study",
     description: "Shipped work, written up.",
@@ -74,6 +79,10 @@ export type Project = {
   links?: ProjectLink[];
   /** Set to true to show on the homepage. */
   featured?: boolean;
+  /** Link the card somewhere other than /projects/<slug> (e.g. a live app). */
+  href?: string;
+  /** Custom visual for the card header instead of the default gradient. */
+  preview?: "running-archive";
 };
 
 export const projects: Project[] = [
@@ -176,31 +185,19 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "ai-sales-intelligence",
-    title: "AI Sales Intelligence App",
+    slug: "running-archive",
+    title: "The Running Archive",
     tagline:
-      "An AI app for sales research that I'm planning to build next.",
-    status: "coming-soon",
-    accent: "amber",
+      "An interactive running and fundraising app tracking my training, marathon goals, and charitable impact.",
+    status: "live",
+    accent: "rose",
     context: "Side project",
     role: "Builder",
-    timeframe: "Up next",
-    stack: ["AI / LLMs", "Software engineering", "Product strategy"],
-    note: "This project hasn't been built yet. This page describes what I plan to build. I'll post updates as I go.",
-    sections: [
-      {
-        heading: "The idea",
-        paragraphs: [
-          // TODO(Rose): describe the problem and your plan in your own words.
-          "I want to see how AI can help with the research that goes into sales. I'm still working out the details and will share more here once I start building.",
-        ],
-      },
-      {
-        heading: "Build log",
-        paragraphs: ["Nothing built yet."],
-      },
-    ],
-    links: [{ label: "GitHub repo (coming soon)", href: "#" }],
+    timeframe: "2026",
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL"],
+    sections: [],
+    href: "/running",
+    preview: "running-archive",
     featured: true,
   },
 ];

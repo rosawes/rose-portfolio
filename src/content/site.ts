@@ -11,7 +11,7 @@ export const site = {
   // Shown in the browser tab and in link previews.
   description:
     "Rose Weseley studied Computer Science and Economics at Wellesley and works in technology and strategy consulting at PwC.",
-  interests: ["AI", "Software engineering", "Startups", "Product design", "Automation", "Strategy"],
+  interests: ["Software Engineering", "Product Design", "Automation", "Creative Technology", "Running"],
   photo: {
     src: "/rose.jpg",
     alt: "Portrait of Rose Weseley",

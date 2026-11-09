@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
 import { Container } from "@/components/container";
 import { accentGradient } from "@/components/project-card";
@@ -16,7 +16,8 @@ import {
 import { isPlaceholderLink } from "@/content/site";
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  // Projects with their own href (like the live Running Archive) don't get a case-study page.
+  return projects.filter((p) => !p.href).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/projects/[slug]">): Promise<Metadata> {
@@ -39,6 +40,7 @@ async function ProjectContent({ params }: { params: Promise<{ slug: string }> })
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) notFound();
+  if (project.href) redirect(project.href);
 
   const next = getAdjacentProject(project.slug);
   const meta = [
@@ -177,7 +179,7 @@ async function ProjectContent({ params }: { params: Promise<{ slug: string }> })
       {next.slug !== project.slug ? (
         <Container>
           <Link
-            href={`/projects/${next.slug}`}
+            href={next.href ?? `/projects/${next.slug}`}
             className="group glass relative flex items-center justify-between gap-6 overflow-hidden rounded-3xl p-8 transition hover:border-border-strong sm:p-10"
           >
             <div aria-hidden className={`absolute -right-10 -bottom-20 size-64 rounded-full bg-gradient-to-br ${accentGradient[next.accent]} opacity-20 blur-3xl transition duration-700 group-hover:opacity-50`} />

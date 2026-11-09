@@ -21,9 +21,9 @@ export function SiteFooter() {
           <nav aria-label="Footer" className="flex gap-5">
             <Link href="/" className="hover:text-text">Home</Link>
             <Link href="/projects" className="hover:text-text">Work</Link>
+            <Link href="/running" className="hover:text-text">Running</Link>
             <Link href="/about" className="hover:text-text">About</Link>
             <Link href="/resume" className="hover:text-text">Resume</Link>
-            <Link href="/running" className="hover:text-text">Running</Link>
           </nav>
           <p>© {site.name} · Built with Next.js, TypeScript &amp; Tailwind</p>
         </div>

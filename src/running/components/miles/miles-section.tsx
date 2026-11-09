@@ -257,10 +257,10 @@ export function MilesSection({ activities, races }: { activities: Activity[]; ra
             </Card>
 
             {/* ── Milestones ── */}
-            <Card title="Lifetime milestones">
+            <Card title="Mileage milestones">
               <p className="text-3xl font-medium tracking-tight tabular-nums">
                 {formatMiles(allRuns.reduce((t, r) => t + r.distanceM, 0))}
-                <span className="ml-1 text-base text-muted">lifetime mi</span>
+                <span className="ml-1 text-base text-muted">mi logged</span>
               </p>
               {lifetime.next ? (
                 <div className="mt-4">

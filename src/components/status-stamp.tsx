@@ -1,6 +1,7 @@
 import { statusMeta, type ProjectStatus } from "@/content/projects";
 
 const dot: Record<ProjectStatus, string> = {
+  live: "bg-emerald shadow-[0_0_10px_var(--emerald)] animate-pulse",
   "case-study": "bg-emerald shadow-[0_0_10px_var(--emerald)]",
   "in-progress": "bg-accent-soft shadow-[0_0_10px_var(--accent-soft)] animate-pulse",
   "design-concept": "bg-accent-2 shadow-[0_0_10px_var(--accent-2)]",

@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 
 export const navItems = [
   { href: "/projects", label: "Work" },
+  { href: "/running", label: "Running" },
   { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
-  { href: "/running", label: "Running" },
 ] as const;
 
 const base = "rounded-xl px-1.5 py-1.5 text-[13px] sm:px-3 sm:text-sm text-muted transition-colors hover:bg-surface-2 hover:text-text";

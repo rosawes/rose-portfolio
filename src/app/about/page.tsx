@@ -8,15 +8,27 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `About ${site.name}: Wellesley CS + Economics, technology & strategy consulting at PwC, building with AI.`,
+  description: `About ${site.name}: Wellesley Computer Science and Economics, technology & strategy consulting at PwC, and The Running Archive.`,
 };
 
 // TODO(Rose): add years if you'd like.
-const path = [
+const path: {
+  marker: string;
+  title: string;
+  body: string;
+  items?: string[];
+  href?: string;
+}[] = [
   {
     marker: "Then",
     title: "Wellesley College",
-    body: "Studied Computer Science and Economics.",
+    body: "B.A. in Computer Science and Economics",
+    items: [
+      "President, Wellesley Asset Management and Finance",
+      "Treasurer, Google Developer Student Club",
+      "Member, Wellesley in Business",
+      "Varsity Field Hockey, starting center midfielder",
+    ],
   },
   {
     marker: "Now",
@@ -24,9 +36,10 @@ const path = [
     body: "Working on technology and strategy projects, and building internal tools for my team when I see a way to save people time.",
   },
   {
-    marker: "Next",
-    title: "An AI side project",
-    body: "Planning an AI sales intelligence app. I'll share updates here once I start building.",
+    marker: "Side project",
+    title: "The Running Archive",
+    body: "Developing an interactive application to track running, marathon goals, and charitable fundraising, with plans to expand it for other runners.",
+    href: "/running",
   },
 ];
 
@@ -40,8 +53,7 @@ export default function AboutPage() {
             <Reveal>
               <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">About</p>
               <h1 className="mt-5 max-w-3xl text-[clamp(2.5rem,6vw,4.75rem)] leading-[1.02] font-medium tracking-[-0.04em]">
-                <span className="text-fade">A little </span>
-                <span className="text-fade">about me.</span>
+                <span className="text-fade">About me.</span>
               </h1>
             </Reveal>
             <Reveal delay={120} className="mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-muted">
@@ -50,9 +62,8 @@ export default function AboutPage() {
                 and I currently work in technology and strategy consulting at PwC.
               </p>
               <p>
-                I like figuring out why something is slow or confusing, and then building something that makes it
-                easier. I&rsquo;m especially interested in AI and how much easier it&rsquo;s becoming to turn an idea
-                into something real.
+                I like figuring out why something is slow or confusing, then building something that works better.
+                I&rsquo;m especially interested in AI and how it&rsquo;s changing the way we create and use technology.
               </p>
               <p>
                 Outside of work, I love running, traveling, and finding new things to try. I recently ran my first
@@ -95,18 +106,46 @@ export default function AboutPage() {
               <Reveal as="li" key={step.title} delay={i * 120} className="relative">
                 <span
                   className={`relative inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-[11px] tracking-widest uppercase ${
-                    i === 1
+                    i > 0
                       ? "border-accent-soft/40 bg-bg text-accent shadow-[0_0_20px_-4px_var(--accent-soft)]"
                       : "border-border bg-bg text-muted"
                   }`}
                 >
-                  <span aria-hidden className={`size-1.5 rounded-full ${i === 1 ? "bg-accent-soft" : "bg-muted"}`} />
+                  <span aria-hidden className={`size-1.5 rounded-full ${i > 0 ? "bg-accent-2" : "bg-muted"}`} />
                   {step.marker}
                 </span>
-                <div className="glass mt-5 rounded-3xl p-6">
-                  <h3 className="text-lg font-medium tracking-tight">{step.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
-                </div>
+                {step.href ? (
+                  <Link
+                    href={step.href}
+                    className="group glass mt-5 block rounded-3xl p-6 transition hover:-translate-y-0.5 hover:border-accent-soft"
+                  >
+                    <h3 className="text-lg font-medium tracking-tight">
+                      Building <span className="text-accent">{step.title}</span>
+                    </h3>
+                    <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
+                    <p className="mt-4 text-sm font-medium text-accent">
+                      Explore it{" "}
+                      <span aria-hidden className="inline-block transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                        ↗
+                      </span>
+                    </p>
+                  </Link>
+                ) : (
+                  <div className="glass mt-5 rounded-3xl p-6">
+                    <h3 className="text-lg font-medium tracking-tight">{step.title}</h3>
+                    <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
+                    {step.items ? (
+                      <ul className="mt-4 space-y-2 border-t border-border pt-4 text-sm text-muted">
+                        {step.items.map((item) => (
+                          <li key={item} className="flex gap-2.5">
+                            <span aria-hidden className="mt-[0.5em] size-1.5 shrink-0 rounded-full bg-accent-2" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                )}
               </Reveal>
             ))}
           </ol>
@@ -132,6 +171,7 @@ export default function AboutPage() {
             <div>
               <h2 className="font-mono text-xs tracking-[0.2em] text-muted uppercase">Find me</h2>
               <SocialLinks className="mt-6" />
+              <p className="mt-3 text-xs text-muted">More projects and code are being added to GitHub.</p>
               <p className="mt-8 text-muted">
                 Or see what I&rsquo;ve been{" "}
                 <Link href="/projects" className="text-text underline decoration-accent decoration-2 underline-offset-4">

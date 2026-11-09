@@ -6,28 +6,28 @@ import { Reveal } from "@/components/reveal";
 import { SpotlightCard } from "@/components/spotlight-card";
 import { projects } from "@/content/projects";
 
-// TODO(Rose): keep this current.
-const currently = [
-  { label: "Working", value: "Technology & strategy consulting at PwC" },
-  { label: "Up next", value: "An AI sales intelligence app" },
-  { label: "Interested in", value: "AI, software & startups" },
+// TODO(Rose): keep this current. Rows with an href become links.
+const currently: { label: string; value: string; href?: string }[] = [
+  { label: "Current role", value: "Technology & strategy consulting at PwC" },
+  { label: "Currently building", value: "The Running Archive", href: "/running" },
+  { label: "Interested in", value: "Software engineering & product design" },
 ];
 
 const focus = [
   {
     icon: "◇",
     title: "Strategy",
-    body: "Economics and consulting have taught me to understand a problem well before jumping to a solution.",
+    body: "Economics and consulting taught me to understand a problem well before deciding what to build.",
   },
   {
     icon: "⌘",
     title: "Engineering",
-    body: "I studied Computer Science, and I like building tools people actually use, like an onboarding automation for my team.",
+    body: "I studied Computer Science and enjoy building useful applications and automations, from internal tools to The Running Archive.",
   },
   {
     icon: "✦",
     title: "AI",
-    body: "I'm curious about how AI can take on slow, manual work. My next project is a chance to dig into that.",
+    body: "I'm interested in using AI to build better products and improve the tools people already rely on.",
   },
 ];
 
@@ -42,11 +42,13 @@ export default function Home() {
           <div>
             <Reveal>
               <Link
-                href="/projects/ai-sales-intelligence"
-                className="glass inline-flex items-center gap-2 rounded-full py-1 pr-3 pl-1 text-xs text-muted transition hover:text-text"
+                href="/running"
+                className="group glass inline-flex items-center gap-2 rounded-full py-1.5 pr-3.5 pl-3 text-xs text-muted transition hover:border-accent-soft hover:text-text"
               >
-                <span className="rounded-full bg-gradient-to-r from-accent-2 to-accent-2 px-2 py-0.5 font-medium text-white">Up next</span>
-                An AI sales intelligence app (coming soon)
+                <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-accent-2 shadow-[0_0_8px_var(--accent-2)]" />
+                Currently building:
+                <span className="font-medium text-accent">The Running Archive</span>
+                <span aria-hidden className="text-accent transition group-hover:translate-x-0.5">→</span>
               </Link>
             </Reveal>
             <Reveal delay={80}>
@@ -77,6 +79,17 @@ export default function Home() {
                 About me
               </Link>
             </Reveal>
+            <Reveal delay={300} className="mt-6">
+              <Link
+                href="/running"
+                className="group inline-flex items-center gap-1.5 text-sm font-medium text-accent"
+              >
+                <span className="bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat pb-0.5 transition-[background-size] duration-300 group-hover:bg-[length:100%_1px]">
+                  Explore my Running Archive
+                </span>
+                <span aria-hidden className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
+              </Link>
+            </Reveal>
           </div>
 
           <Reveal delay={200} className="relative mx-auto w-full max-w-[460px]">
@@ -90,7 +103,15 @@ export default function Home() {
                 {currently.map((c) => (
                   <div key={c.label} className="flex items-baseline justify-between gap-4 text-sm">
                     <dt className="shrink-0 text-muted">{c.label}</dt>
-                    <dd className="text-right text-text">{c.value}</dd>
+                    <dd className="text-right text-text">
+                      {c.href ? (
+                        <Link href={c.href} className="text-accent underline decoration-accent-soft underline-offset-4 transition hover:decoration-accent">
+                          {c.value}
+                        </Link>
+                      ) : (
+                        c.value
+                      )}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -112,10 +133,9 @@ export default function Home() {
       <section className="py-28" aria-labelledby="focus-heading">
         <Container>
           <Reveal className="max-w-2xl">
-            <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">What I work on</p>
+            <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">Background</p>
             <h2 id="focus-heading" className="mt-4 text-4xl font-medium tracking-[-0.03em] sm:text-5xl">
-              <span className="text-fade">A mix of strategy and </span>
-              <span className="text-fade">code.</span>
+              <span className="text-fade">The background I bring to projects.</span>
             </h2>
           </Reveal>
           <ul className="mt-14 grid gap-5 md:grid-cols-3">
