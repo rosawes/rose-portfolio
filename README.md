@@ -64,3 +64,15 @@ Placeholder project links (`href: "#"`) render as "(link coming)" instead of a b
   `@tailwindcss/turbopack` is updated.
 - Recommended Node.js: the current LTS (v22.12+ or v24). The project builds on v21.6.2,
   but that version is end-of-life.
+
+## The Running Archive (`/running`)
+
+A running analytics, marathon, and fundraising app inside the portfolio, backed by
+Supabase (Postgres + Auth). See:
+
+- [`docs/running-archive/PLAN.md`](docs/running-archive/PLAN.md): architecture, data model, and decisions
+- [`docs/running-archive/SETUP.md`](docs/running-archive/SETUP.md): one-time database and login setup
+
+```bash
+npm test        # unit tests for calculations, validation, and import logic
+```

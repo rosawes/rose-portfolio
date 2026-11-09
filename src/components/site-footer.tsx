@@ -23,6 +23,7 @@ export function SiteFooter() {
             <Link href="/projects" className="hover:text-text">Work</Link>
             <Link href="/about" className="hover:text-text">About</Link>
             <Link href="/resume" className="hover:text-text">Resume</Link>
+            <Link href="/running" className="hover:text-text">Running</Link>
           </nav>
           <p>© {site.name} · Built with Next.js, TypeScript &amp; Tailwind</p>
         </div>

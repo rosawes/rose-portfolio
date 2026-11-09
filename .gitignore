@@ -47,3 +47,29 @@ next-env.d.ts
 
 # logs
 *.log
+
+# ── Private running data (never commit) ──────────────────────
+# Raw Strava exports and anything derived from them before review.
+/private-strava-imports/
+/.import-tmp/
+*.import.json
+# GPS / activity files, in any folder
+*.gpx
+*.gpx.gz
+*.tcx
+*.tcx.gz
+*.fit
+*.fit.gz
+# Strava bulk-export archives
+export_*.zip
+strava*.zip
+
+# ── Credentials ──────────────────────────────────────────────
+# (.env* is already ignored above) Other credential files:
+*.key
+*credentials*.json
+*token*.json
+supabase/.temp/
+
+# The settings TEMPLATE is safe to commit (no real values)
+!.env.example
