@@ -51,13 +51,13 @@ begin
                                   reported_raised_cents, raised_is_minimum, status, is_confirmed)
     values (uid, nyc_race, 'NYC Marathon 2026', 'Memorial Sloan Kettering Cancer Center', 'Fred''s Team',
             650000,   -- $6,500 goal
-            700000,   -- "over $7,000", shown as $7,000+
-            true, 'completed', true)
+            716000,   -- $7,160 raised
+            false, 'completed', true)
     returning id into nyc_campaign;
 
-    -- Approximate breakdown (based on $7,000; editable in the admin).
+    -- Approximate breakdown (adds up to $7,160; editable in the admin).
     insert into public.contributions (user_id, campaign_id, amount_cents, category, label, is_approximate) values
-      (uid, nyc_campaign, 200000, 'bake_sale',     'Homemade Argentine alfajor bake sales', true),
+      (uid, nyc_campaign, 216000, 'bake_sale',     'Homemade Argentine alfajor bake sales', true),
       (uid, nyc_campaign,  50000, 'social_media',  'Social media competition',              true),
       (uid, nyc_campaign,  50000, 'company_match', 'Company matching',                      true),
       (uid, nyc_campaign,  40000, 'personal',      'Personal contribution',                 true),

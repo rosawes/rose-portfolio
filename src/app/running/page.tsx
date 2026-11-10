@@ -130,7 +130,7 @@ function Archive({ archive }: { archive: PublicArchive }) {
         <section aria-labelledby="impact-title" id="impact" className="scroll-mt-36">
           <Container>
             <SectionHeading id="impact-title" index="3" kicker="The Impact" title="Miles that give back.">
-              For the 2026 NYC Marathon, I raised over $7,000 for breast cancer research at Memorial Sloan Kettering
+              For the 2026 NYC Marathon, I raised $7,160 for breast cancer research at Memorial Sloan Kettering
               Cancer Center as part of Fred&rsquo;s Team. Here&rsquo;s where it came from, and what&rsquo;s next.
             </SectionHeading>
             <div className="mt-10">
