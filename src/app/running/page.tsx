@@ -35,10 +35,6 @@ export default function RunningPage() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               Tracking my miles, marathon milestones, and the impact I&rsquo;ve made along the way.
             </p>
-            <p className="mt-4 inline-flex items-center gap-2 text-sm text-[#d4573f]" role="status">
-              <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-[#e8735c]" />
-              Running data is currently being imported. More miles coming soon.
-            </p>
           </Reveal>
         </Container>
       </section>
