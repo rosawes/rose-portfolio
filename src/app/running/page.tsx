@@ -3,6 +3,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
+import { site } from "@/content/site";
 import { lifetimeRaised } from "@/running/domain/fundraising";
 import { formatRaised } from "@/running/domain/money";
 import { selectRuns, summarize } from "@/running/domain/stats";
@@ -41,6 +42,25 @@ export default function RunningPage() {
       <Suspense fallback={<ArchiveSkeleton />}>
         <ArchiveContent />
       </Suspense>
+      <section aria-label="Follow along on Strava">
+        <Container className="pt-24 pb-8">
+          <Reveal className="border-t border-border pt-10">
+            <a
+              href={site.links.strava}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 text-lg font-medium text-text"
+            >
+              <span className="underline decoration-accent decoration-2 underline-offset-4 transition group-hover:text-accent">
+                Follow my runs on Strava
+              </span>
+              <span aria-hidden className="text-accent transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                ↗
+              </span>
+            </a>
+          </Reveal>
+        </Container>
+      </section>
     </>
   );
 }
@@ -101,7 +121,7 @@ function Archive({ archive }: { archive: PublicArchive }) {
         <section aria-labelledby="miles-title" id="miles" className="scroll-mt-36">
           <Container>
             <SectionHeading id="miles-title" index="1" kicker="The Miles" title="Every run, counted.">
-              Mileage, pace, and consistency from my logged runs.
+              Mileage, pace, and consistency from my logged runs. Data imported from Strava.
             </SectionHeading>
             <div className="mt-10">
               <MilesSection activities={archive.activities} races={archive.races} />

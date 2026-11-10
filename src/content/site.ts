@@ -19,6 +19,7 @@ export const site = {
   links: {
     github: "https://github.com/rosawes",
     linkedin: "https://www.linkedin.com/in/frances-rose-weseley",
+    strava: "https://www.strava.com/athletes/rweseley",
     // TODO(Rose): add the email you want public, as "mailto:you@example.com"
     email: "",
     // The PDF lives at public/resume.pdf. Replace that file to update it.
