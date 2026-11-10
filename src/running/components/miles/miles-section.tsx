@@ -136,7 +136,7 @@ export function MilesSection({ activities, races }: { activities: Activity[]; ra
           </div>
 
           {/* ── Heatmap ── */}
-          <Card title="Every day I ran" action={
+          <Card title="Every Day I Ran" action={
             years.length > 1 ? (
               <select
                 aria-label="Heatmap year"
@@ -155,61 +155,9 @@ export function MilesSection({ activities, races }: { activities: Activity[]; ra
             <CalendarHeatmap year={shownHeatYear} days={days} />
           </Card>
 
-          {/* ── Mileage ── */}
-          <Card
-            title={`${UNIT_LABELS[unit]} mileage`}
-            action={
-              <div className="flex rounded-xl bg-surface-2 p-1" role="group" aria-label="Group mileage by">
-                {(["week", "month", "year"] as const).map((u) => (
-                  <button
-                    key={u}
-                    type="button"
-                    aria-pressed={unit === u}
-                    onClick={() => setUnit(u)}
-                    className={`rounded-lg px-3 py-1 text-sm transition ${unit === u ? "bg-white text-text shadow-sm" : "text-muted hover:text-text"}`}
-                  >
-                    {UNIT_LABELS[u]}
-                  </button>
-                ))}
-              </div>
-            }
-          >
-            <MileageChart key={`${unit}-${filterLabel}`} buckets={buckets} />
-          </Card>
-
-          <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-            {/* ── Pace ── */}
-            <Card title="Pace progression">
-              {pace.length >= 2 ? (
-                <PaceChart key={filterLabel} points={pace} />
-              ) : (
-                <p className="py-10 text-center text-sm text-muted">Pace trends appear once there are runs in at least two months.</p>
-              )}
-            </Card>
-
-            {/* ── Insights ── */}
-            <Card title="What the data says">
-              {insights.length ? (
-                <ul className="space-y-4">
-                  {insights.map((i) => (
-                    <li key={i.id} className="flex gap-3">
-                      <span aria-hidden className="mt-1.5 size-2 shrink-0 rounded-full bg-accent-2" />
-                      <div>
-                        <p className="font-medium">{i.title}</p>
-                        <p className="text-sm text-muted">{i.detail}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="text-sm text-muted">Insights appear as more runs are logged.</p>
-              )}
-            </Card>
-          </div>
-
           <div className="grid gap-6 lg:grid-cols-3">
             {/* ── Longest runs ── */}
-            <Card title="Longest runs">
+            <Card title="Longest Runs">
               <ol className="space-y-3">
                 {longest.map((r, i) => (
                   <li key={r.id} className="flex items-baseline justify-between gap-3">
@@ -231,7 +179,7 @@ export function MilesSection({ activities, races }: { activities: Activity[]; ra
             </Card>
 
             {/* ── Personal records ── */}
-            <Card title="Personal records">
+            <Card title="Personal Records">
               {pbs.length ? (
                 <ul className="space-y-3">
                   {pbs.map((p) => (
@@ -257,7 +205,7 @@ export function MilesSection({ activities, races }: { activities: Activity[]; ra
             </Card>
 
             {/* ── Milestones ── */}
-            <Card title="Mileage milestones">
+            <Card title="Mileage Milestones">
               <p className="text-3xl font-medium tracking-tight tabular-nums">
                 {formatMiles(allRuns.reduce((t, r) => t + r.distanceM, 0))}
                 <span className="ml-1 text-base text-muted">mi logged</span>
@@ -293,6 +241,58 @@ export function MilesSection({ activities, races }: { activities: Activity[]; ra
               </p>
             </Card>
           </div>
+          {/* ── Mileage ── */}
+          <Card
+            title={`${UNIT_LABELS[unit]} Mileage`}
+            action={
+              <div className="flex rounded-xl bg-surface-2 p-1" role="group" aria-label="Group mileage by">
+                {(["week", "month", "year"] as const).map((u) => (
+                  <button
+                    key={u}
+                    type="button"
+                    aria-pressed={unit === u}
+                    onClick={() => setUnit(u)}
+                    className={`rounded-lg px-3 py-1 text-sm transition ${unit === u ? "bg-white text-text shadow-sm" : "text-muted hover:text-text"}`}
+                  >
+                    {UNIT_LABELS[u]}
+                  </button>
+                ))}
+              </div>
+            }
+          >
+            <MileageChart key={`${unit}-${filterLabel}`} buckets={buckets} />
+          </Card>
+
+          <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+            {/* ── Pace ── */}
+            <Card title="Pace Progression">
+              {pace.length >= 2 ? (
+                <PaceChart key={filterLabel} points={pace} />
+              ) : (
+                <p className="py-10 text-center text-sm text-muted">Pace trends appear once there are runs in at least two months.</p>
+              )}
+            </Card>
+
+            {/* ── Insights ── */}
+            <Card title="What the Data Says">
+              {insights.length ? (
+                <ul className="space-y-4">
+                  {insights.map((i) => (
+                    <li key={i.id} className="flex gap-3">
+                      <span aria-hidden className="mt-1.5 size-2 shrink-0 rounded-full bg-accent-2" />
+                      <div>
+                        <p className="font-medium">{i.title}</p>
+                        <p className="text-sm text-muted">{i.detail}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-sm text-muted">Insights appear as more runs are logged.</p>
+              )}
+            </Card>
+          </div>
+
         </>
       )}
     </div>

@@ -34,7 +34,7 @@ export default function RunningPage() {
               The Running Archive
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Tracking my miles, marathon milestones, and the impact I&rsquo;ve made along the way.
+              Tracking my miles, marathon milestones, and the impact I&rsquo;ve made along the way. Data imported from Strava.
             </p>
           </Reveal>
         </Container>
@@ -121,7 +121,7 @@ function Archive({ archive }: { archive: PublicArchive }) {
         <section aria-labelledby="miles-title" id="miles" className="scroll-mt-36">
           <Container>
             <SectionHeading id="miles-title" index="1" kicker="The Miles" title="Every run, counted.">
-              Mileage, pace, and consistency from my logged runs. Data imported from Strava.
+              Mileage, pace, and consistency from my logged runs.
             </SectionHeading>
             <div className="mt-10">
               <MilesSection activities={archive.activities} races={archive.races} />
